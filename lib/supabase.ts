@@ -2,11 +2,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createClient } from '@supabase/supabase-js';
 
 // For demo purposes - replace with your actual Supabase credentials
-const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || 'https://your-project-ref.supabase.co';
-const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || 'your-anon-key-here';
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL || 'https://xvuwinzqwvljlszxjnkp.supabase.co';
+const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2dXdpbnpxd3ZsamxzenhqbmtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwNzA0MDIsImV4cCI6MjA3NDY0NjQwMn0.XozCbcN37CEXwfjRY0NjfPKYV00z-58-ge82SZQdEi0';
 
 // Validate configuration
-if (supabaseUrl === 'https://your-project-ref.supabase.co' || supabaseAnonKey === 'your-anon-key-here') {
+if (supabaseUrl === 'https://xvuwinzqwvljlszxjnkp.supabase.co' || supabaseAnonKey === 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh2dXdpbnpxd3ZsamxzenhqbmtwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTkwNzA0MDIsImV4cCI6MjA3NDY0NjQwMn0.XozCbcN37CEXwfjRY0NjfPKYV00z-58-ge82SZQdEi0') {
   console.error('❌ Supabase configuration missing!');
   console.error('Please set up your Supabase project and update the configuration.');
   console.error('See DEMO_CONFIG.md for detailed instructions.');
