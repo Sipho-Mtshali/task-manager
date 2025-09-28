@@ -8,13 +8,13 @@ import { Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import React, { useEffect, useState } from 'react';
 import {
-    Alert,
-    FlatList,
-    RefreshControl,
-    StyleSheet,
-    Text,
-    TouchableOpacity,
-    View,
+  Alert,
+  FlatList,
+  RefreshControl,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
 
 export default function HomeScreen() {
@@ -31,7 +31,24 @@ export default function HomeScreen() {
 
   useEffect(() => {
     if (!user) {
-      router.replace('/auth/login');
+      // Add a small delay to ensure navigation is ready
+      const timer = setTimeout(() => {
+        try {
+          router.replace('/auth/login');
+        } catch (error) {
+          console.log('Navigation not ready yet:', error);
+          // Try again after another delay
+          setTimeout(() => {
+            try {
+              router.replace('/auth/login');
+            } catch (err) {
+              console.log('Navigation still not ready, user will need to manually navigate');
+            }
+          }, 1000);
+        }
+      }, 100);
+
+      return () => clearTimeout(timer);
     }
   }, [user]);
 
@@ -83,7 +100,13 @@ export default function HomeScreen() {
   };
 
   if (!user) {
-    return null; // Will redirect to login
+    return (
+      <View style={styles.container}>
+        <View style={styles.loadingContainer}>
+          <Text style={styles.loadingText}>Redirecting to login...</Text>
+        </View>
+      </View>
+    ); // Show loading instead of null
   }
 
   return (
